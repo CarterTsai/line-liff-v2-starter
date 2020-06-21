@@ -103,7 +103,7 @@ function displayIsInClientInfo() {
 
  var getQRCode = function () {
      liff.getProfile().then(function (profile) {
-         var qrcode = new QRCode("test", {
+         var qrcode = new QRCode("qrcode", {
              text: profile.userId,
              width: 128,
              height: 128,
