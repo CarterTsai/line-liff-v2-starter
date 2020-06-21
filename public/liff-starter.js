@@ -17,7 +17,7 @@ window.onload = function() {
                 initializeLiffOrDie(myLiffId);
             })
             .catch(function(error) {
-                document.getElementById("liffAppContent").classList.add('hidden');
+               // document.getElementById("liffAppContent").classList.add('hidden');
                 document.getElementById("nodeLiffIdErrorMessage").classList.remove('hidden');
             });
     } else {
