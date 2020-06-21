@@ -99,11 +99,11 @@ function displayIsInClientInfo() {
     }
 }
 
- var qrcode = new QRCode("qrcode");
+ //var qrcode = new QRCode("qrcode");
 
  var getQRCode = function () {
      liff.getProfile().then(function (profile) {
-         qrcode.clear(); // clear the code.
+         //qrcode.clear(); // clear the code.
          var qrcode = new QRCode("qrcode", {
              text: profile.userId,
              width: 128,
