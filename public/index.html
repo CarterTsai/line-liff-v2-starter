@@ -9,12 +9,18 @@
     </head>
     <body>
         <div id="liffAppContent">
+            <div id="profileInfo" class="textLeft">
+                <h2>Profile</h2>
+                <a href="#" onclick="getQRCode()">Get QRCode</a>
+                <div id="qrcode"></div>
+            </div>
+            <div class="buttonRow">
+                <!-- <button id="openWindowButton">Open External Window</button> -->
+                <button id="closeWindowButton">Close LIFF App</button>
+            </div>
             <!-- ACTION BUTTONS -->
             <div class="buttonGroup">
-                <div class="buttonRow">
-                    <!-- <button id="openWindowButton">Open External Window</button> -->
-                    <button id="closeWindowButton">Close LIFF App</button>
-                </div>
+               
                 <!-- <div class="buttonRow">
                     <button id="scanQrCodeButton">Open QR Code Reader</button>
                     <button id="sendMessageButton">Send Message</button>
@@ -51,11 +57,7 @@
                 </table>
             </div> -->
             <!-- PROFILE INFO -->
-            <div id="profileInfo" class="textLeft">
-                <h2>Profile</h2>
-                <a href="#" onclick="getQRCode()">Get QRCode</a>
-                <div id="qrcode"></div>
-            </div>
+           
             <!-- LIFF DATA
             <div id="liffData">
                 <h2 id="liffDataHeader" class="textLeft">LIFF Data</h2>
