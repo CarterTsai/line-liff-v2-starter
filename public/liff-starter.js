@@ -103,6 +103,7 @@ function displayIsInClientInfo() {
 
  var getQRCode = function () {
      liff.getProfile().then(function (profile) {
+         qrcode.clear(); // clear the code.
          var qrcode = new QRCode("qrcode", {
              text: profile.userId,
              width: 128,
@@ -111,10 +112,6 @@ function displayIsInClientInfo() {
              colorLight: "#ffffff",
              correctLevel: QRCode.CorrectLevel.H
          });
-
-         qrcode.clear(); // clear the code.
-         qrcode.makeCode(); // make another code.
-
      }).catch(function (error) {
          window.alert('Error getting profile: ' + error);
      });
