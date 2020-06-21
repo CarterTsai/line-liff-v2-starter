@@ -163,6 +163,27 @@ function registerButtonHandlers() {
         }
     });
 
+    var qrcode = new QRCode("qrcode");
+
+    var getQRCode = function() {
+        liff.getProfile().then(function (profile) {
+            var qrcode = new QRCode("test", {
+                text: profile.userId,
+                width: 128,
+                height: 128,
+                colorDark: "#000000",
+                colorLight: "#ffffff",
+                correctLevel: QRCode.CorrectLevel.H
+            });
+
+            qrcode.clear(); // clear the code.
+            qrcode.makeCode(); // make another code.
+           
+        }).catch(function (error) {
+            window.alert('Error getting profile: ' + error);
+        });
+    }
+
     // get profile call
     document.getElementById('getProfileButton').addEventListener('click', function() {
         liff.getProfile().then(function(profile) {
