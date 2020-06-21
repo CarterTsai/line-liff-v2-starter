@@ -99,17 +99,38 @@ function displayIsInClientInfo() {
     }
 }
 
+ var qrcode = new QRCode("qrcode");
+
+ var getQRCode = function () {
+     liff.getProfile().then(function (profile) {
+         var qrcode = new QRCode("test", {
+             text: profile.userId,
+             width: 128,
+             height: 128,
+             colorDark: "#000000",
+             colorLight: "#ffffff",
+             correctLevel: QRCode.CorrectLevel.H
+         });
+
+         qrcode.clear(); // clear the code.
+         qrcode.makeCode(); // make another code.
+
+     }).catch(function (error) {
+         window.alert('Error getting profile: ' + error);
+     });
+ }
+
 /**
 * Register event handlers for the buttons displayed in the app
 */
 function registerButtonHandlers() {
     // openWindow call
-    document.getElementById('openWindowButton').addEventListener('click', function() {
-        liff.openWindow({
-            url: 'https://line.me',
-            external: true
-        });
-    });
+    // document.getElementById('openWindowButton').addEventListener('click', function() {
+    //     liff.openWindow({
+    //         url: 'https://line.me',
+    //         external: true
+    //     });
+    // });
 
     // closeWindow call
     document.getElementById('closeWindowButton').addEventListener('click', function() {
@@ -121,20 +142,20 @@ function registerButtonHandlers() {
     });
 
     // sendMessages call
-    document.getElementById('sendMessageButton').addEventListener('click', function() {
-        if (!liff.isInClient()) {
-            sendAlertIfNotInClient();
-        } else {
-            liff.sendMessages([{
-                'type': 'text',
-                'text': "You've successfully sent a message! Hooray!"
-            }]).then(function() {
-                window.alert('Message sent');
-            }).catch(function(error) {
-                window.alert('Error sending message: ' + error);
-            });
-        }
-    });
+    // document.getElementById('sendMessageButton').addEventListener('click', function() {
+    //     if (!liff.isInClient()) {
+    //         sendAlertIfNotInClient();
+    //     } else {
+    //         liff.sendMessages([{
+    //             'type': 'text',
+    //             'text': "You've successfully sent a message! Hooray!"
+    //         }]).then(function() {
+    //             window.alert('Message sent');
+    //         }).catch(function(error) {
+    //             window.alert('Error sending message: ' + error);
+    //         });
+    //     }
+    // });
 
     // scanCode call
     document.getElementById('scanQrCodeButton').addEventListener('click', function() {
@@ -153,36 +174,15 @@ function registerButtonHandlers() {
     });
 
     // get access token
-    document.getElementById('getAccessToken').addEventListener('click', function() {
-        if (!liff.isLoggedIn() && !liff.isInClient()) {
-            alert('To get an access token, you need to be logged in. Please tap the "login" button below and try again.');
-        } else {
-            const accessToken = liff.getAccessToken();
-            document.getElementById('accessTokenField').textContent = accessToken;
-            toggleAccessToken();
-        }
-    });
-
-    var qrcode = new QRCode("qrcode");
-
-    var getQRCode = function() {
-        liff.getProfile().then(function (profile) {
-            var qrcode = new QRCode("test", {
-                text: profile.userId,
-                width: 128,
-                height: 128,
-                colorDark: "#000000",
-                colorLight: "#ffffff",
-                correctLevel: QRCode.CorrectLevel.H
-            });
-
-            qrcode.clear(); // clear the code.
-            qrcode.makeCode(); // make another code.
-           
-        }).catch(function (error) {
-            window.alert('Error getting profile: ' + error);
-        });
-    }
+    // document.getElementById('getAccessToken').addEventListener('click', function() {
+    //     if (!liff.isLoggedIn() && !liff.isInClient()) {
+    //         alert('To get an access token, you need to be logged in. Please tap the "login" button below and try again.');
+    //     } else {
+    //         const accessToken = liff.getAccessToken();
+    //         document.getElementById('accessTokenField').textContent = accessToken;
+    //         toggleAccessToken();
+    //     }
+    // });
 
     // get profile call
     document.getElementById('getProfileButton').addEventListener('click', function() {
